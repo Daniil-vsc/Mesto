@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Mesto</title>
+    <meta name="description" content="Практическая работа четвертого спринта">
+    <meta name="author" content="Даниил">
+</head>
+
+<body class="body">
+    <div class="main">
+        <header class="header">
+            <img class="header__logo" src="./images/Vector.svg" alt="Логотип">
+        </header>
+        <section class="profile">
+            <img class="profile__avatar" src="./images/kusto.jpg" alt="Аватар пользователя">
+
+            <div class="profile__info">
+                <div class="profile__container">
+                    <p class="profile__name">Жак-Ив Кусто</p>
+                    <button class="button button__edit"></button>
+                </div>
+                <p class="profile__job">Исследователь океана</p>
+            </div>
+
+            <button class="button button__add">
+                <img class="button__add_el_icon" src="./images/plus.svg" alt="Кнопка добавления фотографии">
+            </button>
+        </section>
+
+        <section class="elements">
+            <div class="element">
+                <img class="element__image" src="./images/tbiilisi1.jpg" alt="Фотография из фотоальбома">
+                <div class="element__container">
+                    <p class="element__name">Тбилиси</p>
+                    <button class="button element__like-button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./images/amster1.jpg" alt="Фотография из фотоальбома">
+                <div class="element__container">
+                    <p class="element__name">Амстердам</p>
+                    <button class="button element__like-button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./images/bali1.jpg" alt="Фотография из фотоальбома">
+                <div class="element__container">
+                    <p class="element__name">Бали</p>
+                    <button class="button element__like-button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./images/travel-photo-2.jpg" alt="Фотография из фотоальбома">
+                <div class="element__container">
+                    <p class="element__name">Гора Эльбрус</p>
+                    <button class="button element__like-button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./images/travel-photo-3.jpg" alt="Фотография из фотоальбома">
+                <div class="element__container">
+                    <p class="element__name">Домбай</p>
+                    <button class="button element__like-button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./images/travel-photo-1.jpg" alt="Фотография из фотоальбома">
+                <div class="element__container">
+                    <p class="element__name">Карачаево-Черкессия</p>
+                    <button class="button element__like-button"></button>
+                </div>
+            </div>
+        </section>
+
+        <div class="popup">
+            <div class="popup__container">
+                <p class="popup__title">Редактировать профиль</p>
+                <form class="form">
+                    <input type="text" placeholder="Жак-Ив Кусто" class="form__text form__text_type_name">
+                    <input type="text" placeholder="Исследователь океана" class="form__text form__text_type_job">
+                    <button class="button form__button">Сохранить</button>
+                </form>
+                <img class="button button__close" src="./images/closeButton.svg">
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p class="footer__copyright">
+                © 2020 Mesto Russia
+            </p>
+        </footer>
+
+    </div>
+    <script src="./script/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+@import url('./__edit/button__edit.css');
+@import url('./__add/button__add.css');
+@import url('./__add/_el/button__add_el_icon.css');
+@import url('./__close/button__close.css');
+
+
+.button {
+    -webkit-transition: opacity ease-in-out .2s;
+    -o-transition: opacity ease-in-out .2s;
+    transition: opacity ease-in-out .2s;
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: .6;
+}

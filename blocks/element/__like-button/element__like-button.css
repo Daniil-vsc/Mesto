@@ -1,0 +1,8 @@
+.element__like-button {
+    width: 20.76px;
+    height: 18.13px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    background-image: url(../../../images/likeButton.svg);
+    background-size: cover;
+}
