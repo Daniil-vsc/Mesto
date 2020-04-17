@@ -1,24 +1,18 @@
-let buttonEdit = document.querySelector('.button__edit');
-let popup = document.querySelector('.popup')
-let buttonClose = document.querySelector('.button__close');
-let name = document.querySelector('.profile__name');
-let nameInput = document.querySelector('.form__text_type_name');
-let job = document.querySelector('.profile__job');
-let jobInput = document.querySelector('.form__text_type_job');
-let formElement = document.querySelector('.form')
+const buttonEdit = document.querySelector('.profile__edit-button');
+const popup = document.querySelector('.popup')
+const buttonClose = document.querySelector('.form__close-button');
+const name = document.querySelector('.profile__name');
+const nameInput = document.querySelector('.form__text_type_name');
+const job = document.querySelector('.profile__job');
+const jobInput = document.querySelector('.form__text_type_job');
+const formElement = document.querySelector('.form')
 
 //Функция открытия попапа
 function OpenPopup() {
     popup.classList.add('popup_opened');
+    nameInput.value = name.textContent;
+    jobInput.value = job.textContent;
 }
-buttonEdit.addEventListener('click', OpenPopup);
-
-//Подставление текста в поля попапа
-function changePlaceholder(){
-    nameInput.setAttribute('placeholder', name.textContent);
-    jobInput.setAttribute('placeholder', job.textContent);
-}
-buttonEdit.addEventListener('click', changePlaceholder);
 
 //Функция закрытия попапа
 function ClosePopup() {
@@ -27,7 +21,6 @@ function ClosePopup() {
     nameInput.value = "";
     jobInput.value = "";
 }
-buttonClose.addEventListener('click', ClosePopup);
 
 //Функция отображения данных из формы на странице
 function formSubmitHandler (evt) {
@@ -42,5 +35,7 @@ function formSubmitHandler (evt) {
     popup.classList.remove('popup_opened');
 }
 
+buttonEdit.addEventListener('click', OpenPopup);
+buttonClose.addEventListener('click', ClosePopup);
 // Прикрепляем обработчик к форме:
 formElement.addEventListener('submit', formSubmitHandler);
