@@ -1,0 +1,23 @@
+.popup__close-button  {
+    position: absolute;
+    top: -43px;
+    right: -38px;
+    cursor: pointer;
+    background-image: url('../../../images/closeButton.svg');
+    background-size: contain;
+    background-position: center;
+    width: 47px;
+    height: 47px;
+}
+
+.popup__close-button:hover {
+    -webkit-animation: rotation .5s ease-out backwards;
+            animation: rotation .5s ease-out backwards;
+}
+
+@media screen and (max-width: 700px) {
+    .popup__close-button  {
+        top: -45px;
+        right: -15px;
+    }
+}

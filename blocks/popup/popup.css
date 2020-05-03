@@ -1,5 +1,10 @@
 @import url('./__container/popup__container.css');
 @import url('./__title/popup__title.css');
+@import url('./__close-button/popup__close-button.css');
+@import url('./__title/popup__title.css');
+@import url('./__image/popup__image.css');
+@import url('./__name/popup__name.css');
+@import url('./__image-container/popup__image-container.css');
 
 
 .popup {
@@ -10,6 +15,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s ease-out 0s, visibility 0.3s ease-out 0s;
 }
 
