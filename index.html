@@ -28,51 +28,20 @@
             </div>
             <button class="button profile__add-button" type="button"></button>
         </section>
+
         <section class="elements">
-            <div class="element">
-                <img class="element__image" src="./images/tbiilisi1.jpg" alt="Фотография из фотоальбома">
-                <div class="element__container">
-                    <p class="element__name">Тбилиси</p>
-                    <button class="button element__like-button" type="button"></button>
+            <template id="element">
+                <div class="element">
+                    <div class="button element__trash-button"></div>
+                    <img class="element__image" src="./images/tbiilisi1.jpg" alt="Фотография из фотоальбома">
+                    <div class="element__container">
+                        <p class="element__name">Тбилиси</p>
+                        <button class="button element__like-button" type="button"></button>
+                    </div>
                 </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="./images/amster1.jpg" alt="Фотография из фотоальбома">
-                <div class="element__container">
-                    <p class="element__name">Амстердам</p>
-                    <button class="button element__like-button" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="./images/bali1.jpg" alt="Фотография из фотоальбома">
-                <div class="element__container">
-                    <p class="element__name">Бали</p>
-                    <button class="button element__like-button" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="./images/travel-photo-2.jpg" alt="Фотография из фотоальбома">
-                <div class="element__container">
-                    <p class="element__name">Гора Эльбрус</p>
-                    <button class="button element__like-button" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="./images/travel-photo-3.jpg" alt="Фотография из фотоальбома">
-                <div class="element__container">
-                    <p class="element__name">Домбай</p>
-                    <button class="button element__like-button" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="./images/travel-photo-1.jpg" alt="Фотография из фотоальбома">
-                <div class="element__container">
-                    <p class="element__name">Карачаево-Черкессия</p>
-                    <button class="button element__like-button" type="button"></button>
-                </div>
-            </div>
+            </template>
         </section>
-        <div class="popup">
+        <section class="popup" id="edit-profile">
             <div class="popup__container">
                 <p class="popup__title">Редактировать профиль</p>
                 <form class="form" method="post">
@@ -81,9 +50,35 @@
                         name="job">
                     <button class="button form__button">Сохранить</button>
                 </form>
-                <button class="button form__close-button" type="button"></button>
+                <button class="button popup__close-button" type="button"></button>
             </div>
-        </div>
+        </section>
+
+        <section class="popup" id="add-image">
+            <div class="popup__container">
+                <p class="popup__title">Новое место</p>
+                <form class="form" method="post" id="place-form">
+                    <input type="text" placeholder="Название" class="form__text form__text_type_name" name="name"
+                        id="place-name">
+                    <input type="text" placeholder="Ссылка на картинку" class="form__text form__text_type_job"
+                        name="job" id="place-link">
+                    <button class="button form__button">Сохранить</button>
+                </form>
+                <button class="button popup__close-button" type="button" id="close-button"></button>
+            </div>
+        </section>
+
+        <section class="popup" id="open-image">
+            <div class="popup__image-container">
+                <img class="popup__image"
+                    src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"
+                    alt="Увеличеная фотография из фотоальбома">
+                <p class="popup__name">Описание места</p>
+                <button class="button popup__close-button" type="button" id="close-image"></button>
+            </div>
+        </section>
+
+
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
