@@ -14,7 +14,6 @@ const placeNameInput = document.getElementById('place-name');
 const placeLinkInput = document.getElementById('place-link');
 const gridElements = document.querySelector('.elements'); //секция для карточек
 const cardElement = document.querySelector('#element').content; //template карточки
-const cardBody = document.querySelector('.element'); //вся карточка
 const popupImage = document.getElementById('open-image'); 
 const popupImageName = document.querySelector('.popup__name');
 const closeButtonBigImage = document.getElementById('close-image');
@@ -52,13 +51,13 @@ const initialCards = [
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
     //переменные для текста, введенного пользователем
-    nameInputValue = nameInput.value;
-    jobInputValue = jobInput.value;
+    const nameInputValue = nameInput.value;
+    const jobInputValue = jobInput.value;
     //Замена имени и работы на странице
     name.textContent = nameInputValue;
     job.textContent =  jobInputValue;
     //Закрытие попапа
-    popup.classList.remove('popup_opened');
+    getPopup(popup)
 }
 
 //Функия открытия и закрытия для всех попапов
@@ -81,12 +80,26 @@ function addNewCard(evt) {
 
 //функция удаления карточки
 function deleteCard(evt) {
-    evt.target.parentElement.remove();
+    const likeButton = document.querySelector('.element__like-button'); //кнопка лайка
+    likeButton.removeEventListener('click', likeCard);
+    const trashButton = document.querySelector('.element__trash-button'); //кнопка корзины
+    trashButton.removeEventListener('click', deleteCard);
+
+    evt.target.closest('.element').remove();
 }
 
 //функция лайк
 function likeCard(evt) {
     evt.target.classList.toggle('element__like-button_type_active');
+}
+
+//функция открытия большого изображения
+function BigImage(evt) {
+    popupBigImage.src = evt.target.src;
+    const singleCard = evt.target.closest('.element');
+    const cardName = singleCard.querySelector('.element__name');
+    popupImageName.textContent = cardName.textContent;
+    getPopup(popupImage);
 }
 
 //Отображение шаблона
@@ -98,20 +111,19 @@ function newCard(name, image) {
     const likeButton = cardTemplate.querySelector('.element__like-button'); //кнопка лайка
     cardName.textContent = name;
     cardImage.src = image;
+    cardImage.alt = name;
     trashButton.addEventListener('click', deleteCard);
     likeButton.addEventListener('click', likeCard);
-    cardImage.addEventListener('click', function (evt) {
-        popupBigImage.src = image;
-        popupImageName.textContent = name;
-        getPopup(popupImage);
-    });
+    cardImage.addEventListener('click', BigImage);
     return cardTemplate;
 }
 
 //Вывод массива в DOM
-initialCards.forEach(function getCardFromArray(item) {
+function getCardFromArray() {
+    initialCards.forEach(function (item) {
     gridElements.prepend(newCard(item.name, item.link));
-});
+    });
+}
 
 editButton.addEventListener('click', () => getPopup(popupEditProfile));
 closeButton.addEventListener('click', () => getPopup(popupEditProfile));
@@ -120,3 +132,5 @@ closeButtonAddImage.addEventListener('click', () => getPopup(popupAddImage));
 formElement.addEventListener('submit', formSubmitHandler);
 formPlace.addEventListener('submit', addNewCard);
 closeButtonBigImage.addEventListener('click', () => getPopup(popupImage))
+
+getCardFromArray()

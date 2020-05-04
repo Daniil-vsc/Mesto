@@ -59,9 +59,9 @@
                 <p class="popup__title">Новое место</p>
                 <form class="form" method="post" id="place-form">
                     <input type="text" placeholder="Название" class="form__text form__text_type_name" name="name"
-                        id="place-name">
+                        id="place-name" required>
                     <input type="text" placeholder="Ссылка на картинку" class="form__text form__text_type_job"
-                        name="job" id="place-link">
+                        name="image" id="place-link">
                     <button class="button form__button">Сохранить</button>
                 </form>
                 <button class="button popup__close-button" type="button" id="close-button"></button>
@@ -70,9 +70,7 @@
 
         <section class="popup" id="open-image">
             <div class="popup__image-container">
-                <img class="popup__image"
-                    src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"
-                    alt="Увеличеная фотография из фотоальбома">
+                <img class="popup__image" src="" alt="Увеличеная фотография из фотоальбома">
                 <p class="popup__name">Описание места</p>
                 <button class="button popup__close-button" type="button" id="close-image"></button>
             </div>

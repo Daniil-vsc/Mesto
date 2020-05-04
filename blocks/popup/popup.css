@@ -17,6 +17,7 @@
     left: 0;
     visibility: hidden;
     opacity: 0;
+    -webkit-transition: opacity .3s ease-out 0s, visibility 0.3s ease-out 0s;
+    -o-transition: opacity .3s ease-out 0s, visibility 0.3s ease-out 0s;
     transition: opacity .3s ease-out 0s, visibility 0.3s ease-out 0s;
 }
-
