@@ -45,9 +45,9 @@
             <div class="popup__container">
                 <p class="popup__title">Редактировать профиль</p>
                 <form class="form" method="post">
-                    <input type="text" placeholder="Введите имя" class="form__text form__text_type_name" name="name">
+                    <input type="text" placeholder="Введите имя" class="form__text form__text_type_name" name="name" required>
                     <input type="text" placeholder="Введите профессию" class="form__text form__text_type_job"
-                        name="job">
+                        name="job" required>
                     <button class="button form__button">Сохранить</button>
                 </form>
                 <button class="button popup__close-button" type="button"></button>
@@ -61,7 +61,7 @@
                     <input type="text" placeholder="Название" class="form__text form__text_type_name" name="name"
                         id="place-name" required>
                     <input type="text" placeholder="Ссылка на картинку" class="form__text form__text_type_job"
-                        name="image" id="place-link">
+                        name="image" id="place-link" required>
                     <button class="button form__button">Сохранить</button>
                 </form>
                 <button class="button popup__close-button" type="button" id="close-button"></button>
