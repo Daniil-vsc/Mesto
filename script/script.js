@@ -49,13 +49,23 @@ const initialCards = [
 
 //Функия открытия и закрытия для всех попапов
 function getPopup(elem) {
+    elem.classList.toggle('popup_opened');
+};
+
+function formPopupAddImage(elem) {
+    if (!elem.classList.contains('popup_opened')) {
+    placeNameInput.value = "";
+    placeLinkInput.value = "";
+    };
+    getPopup(elem)
+};
+
+function formPopupEditProfile(elem) {
     if (!elem.classList.contains('popup_opened')) {
         nameInput.value = name.textContent;
         jobInput.value = job.textContent;
-        placeNameInput.value = "";
-        placeLinkInput.value = "";
-    }
-    elem.classList.toggle('popup_opened');
+    };
+    getPopup(elem)
 };
 
 //Функция отображения данных из формы на странице
@@ -77,9 +87,10 @@ function likeCard(evt) {
 }
 
 //функция открытия большого изображения
-function BigImage(evt) {
+function bigImage(evt) {
     popupBigImage.src = evt.target.src;
     popupImageName.textContent = evt.target.alt;
+    popupBigImage.alt = evt.target.alt;
     getPopup(popupImage);
 }
 
@@ -105,7 +116,7 @@ function newCard(name, image) {
     cardImage.alt = name;
     trashButton.addEventListener('click', deleteCard);
     likeButton.addEventListener('click', likeCard);
-    cardImage.addEventListener('click', BigImage);
+    cardImage.addEventListener('click', bigImage);
     return cardTemplate;
 }
 
@@ -114,6 +125,7 @@ function addNewCard(evt) {
     evt.preventDefault();
     gridElements.prepend(newCard(placeNameInput.value, placeLinkInput.value));
     getPopup(popupAddImage)
+    
 }
 
 //Вывод массива в DOM
@@ -121,10 +133,10 @@ function getCardFromArray() {
  initialCards.forEach(({name, link}) => gridElements.prepend(newCard(name,link)));
 }
 
-editButton.addEventListener('click', () => getPopup(popupEditProfile));
-closeButton.addEventListener('click', () => getPopup(popupEditProfile));
-addButton.addEventListener('click', () => getPopup(popupAddImage));
-closeButtonAddImage.addEventListener('click', () => getPopup(popupAddImage));
+editButton.addEventListener('click', () => formPopupEditProfile(popupEditProfile));
+closeButton.addEventListener('click', () => formPopupEditProfile(popupEditProfile));
+addButton.addEventListener('click', () => formPopupAddImage(popupAddImage));
+closeButtonAddImage.addEventListener('click', () => formPopupAddImage(popupAddImage));
 formElement.addEventListener('submit', formSubmitHandler);
 formPlace.addEventListener('submit', addNewCard);
 closeButtonBigImage.addEventListener('click', () => getPopup(popupImage))
