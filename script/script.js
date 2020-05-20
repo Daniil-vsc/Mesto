@@ -2,16 +2,16 @@ const popup = document.querySelector('.popup'); //общий класс
 const editButton = document.querySelector('.profile__edit-button'); //кнопка ред. имени
 const name = document.querySelector('.profile__name'); //имя, отображаемое на странице
 const closeButton = document.querySelector('.popup__close-button'); //кнопка закрыть попап
-const nameInput = document.querySelector('.form__text_type_name');
+const nameInput = document.querySelector('.popup__input_type_name');
 const job = document.querySelector('.profile__job');
-const jobInput = document.querySelector('.form__text_type_job');
-const formElement = document.querySelector('.form');
+const jobInput = document.querySelector('.popup__input_type_job');
+const formElement = document.querySelector('.popup__form');
 const popupAddImage = document.getElementById('add-image'); //попап добавления карточки
 const addButton = document.querySelector('.profile__add-button'); //кнопка добавить изображение
 const closeButtonAddImage = document.getElementById('close-button');
 const popupEditProfile = document.getElementById('edit-profile');
-const placeNameInput = document.getElementById('place-name');
-const placeLinkInput = document.getElementById('place-link');
+const placeNameInput = document.getElementById('place-input');
+const placeLinkInput = document.getElementById('link-input');
 const gridElements = document.querySelector('.elements'); //секция для карточек
 const cardElement = document.querySelector('#element').content; //template карточки
 const popupImage = document.getElementById('open-image'); 
@@ -139,6 +139,19 @@ addButton.addEventListener('click', () => formPopupAddImage(popupAddImage));
 closeButtonAddImage.addEventListener('click', () => formPopupAddImage(popupAddImage));
 formElement.addEventListener('submit', formSubmitHandler);
 formPlace.addEventListener('submit', addNewCard);
-closeButtonBigImage.addEventListener('click', () => getPopup(popupImage))
+closeButtonBigImage.addEventListener('click', () => getPopup(popupImage));
+
+document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      document.querySelector('.popup_opened').classList.remove('popup_opened');
+      clearInputs();
+    };
+});
+document.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup')) {
+        document.querySelector('.popup_opened').classList.remove('popup_opened');
+        clearInputs();
+    }
+});
 
 getCardFromArray()

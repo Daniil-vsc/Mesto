@@ -6,7 +6,14 @@
 @import url('./__name/popup__name.css');
 @import url('./__image-container/popup__image-container.css');
 @import url('./_opened/popup_opened.css');
-
+@import url('./__form/popup__form.css');
+@import url('./__input/popup__input.css');
+@import url('./__button/popup__button.css');
+@import url('./__button/_disabled/popup__button_disable.css');
+@import url('./__input/_type/popup__input_type_job.css');
+@import url('./__input/_type/popup__input_type_error.css');
+@import url('./__error/popup__error.css');
+@import url('./__error/_visible/popup__error_visible.css');
 
 .popup {
     z-index: 1;
