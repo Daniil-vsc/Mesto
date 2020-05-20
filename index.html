@@ -28,7 +28,6 @@
             </div>
             <button class="button profile__add-button" type="button"></button>
         </section>
-
         <section class="elements">
             <template id="element">
                 <div class="element">
@@ -44,30 +43,41 @@
         <section class="popup" id="edit-profile">
             <div class="popup__container">
                 <p class="popup__title">Редактировать профиль</p>
-                <form class="form" method="post">
-                    <input type="text" placeholder="Введите имя" class="form__text form__text_type_name" name="name" required>
-                    <input type="text" placeholder="Введите профессию" class="form__text form__text_type_job"
-                        name="job" required>
-                    <button class="button form__button">Сохранить</button>
+                <form class="popup__form" method="post" name="edit-form" novalidate>
+                    <label class="popup__field">
+                        <input type="text" placeholder="Введите имя" class="popup__input popup__input_type_name" name="name"
+                            id="name-input" value minlength="2" maxlength="48" pattern="[a-zA-Zа-яёА-ЯЁ -]{1,}" required>
+                        <span id="name-input-error" class="popup__error"></span>
+                    </label>
+                    <label class="popup__field">
+                        <input type="text" placeholder="Введите профессию" class="popup__input popup__input_type_job"
+                            name="job" id="job-input" value minlength="2" maxlength="200" required>
+                        <span id="job-input-error" class="popup__error"></span>
+                    </label>
+                        <button class="button popup__button" type="submit">Сохранить</button>
                 </form>
-                <button class="button popup__close-button" type="button"></button>
+                <button class="button popup__close-button" type="reset"></button>
             </div>
         </section>
-
         <section class="popup" id="add-image">
             <div class="popup__container">
                 <p class="popup__title">Новое место</p>
-                <form class="form" method="post" id="place-form">
-                    <input type="text" placeholder="Название" class="form__text form__text_type_name" name="name"
-                        id="place-name" required>
-                    <input type="text" placeholder="Ссылка на картинку" class="form__text form__text_type_job"
-                        name="image" id="place-link" required>
-                    <button class="button form__button">Сохранить</button>
+                <form class="popup__form" method="post" id="place-form" name="place-form" novalidate>                  
+                    <label class="popup__field">
+                        <input type="text" placeholder="Название" class="popup__input form__input_type_name" name="place-name"
+                            id="place-input" minlength="2" maxlength="30" value required>
+                        <span id="place-input-error" class="popup__error"></span>
+                    </label>
+                    <label class="popup__field">
+                        <input type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_job"
+                            name="link-input" id="link-input" value required>
+                        <span id="link-input-error" class="popup__error"></span>
+                    </label>
+                    <button class="button popup__button" type="submit">Сохранить</button>
                 </form>
-                <button class="button popup__close-button" type="button" id="close-button"></button>
+                <button class="button popup__close-button" type="reset" id="close-button"></button>
             </div>
         </section>
-
         <section class="popup" id="open-image">
             <div class="popup__image-container">
                 <img class="popup__image" src="" alt="Увеличеная фотография из фотоальбома">
@@ -75,13 +85,12 @@
                 <button class="button popup__close-button" type="button" id="close-image"></button>
             </div>
         </section>
-
-
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
     </div>
     <script src="./script/script.js"></script>
+    <script src="./script/validate.js"></script>
 </body>
 
 </html>
