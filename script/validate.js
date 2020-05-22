@@ -1,5 +1,5 @@
 //Элементы для проверки
-const elements = {
+const validationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
@@ -34,7 +34,7 @@ const isValid = (formElement, inputElement, form) => {
 };
 
 //Проверяем валидность форму
-hasInvalidInput = (inputList) => {
+const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
         return !inputElement.validity.valid;
     })  
@@ -82,4 +82,4 @@ const enableValidation = (form) => {
   };
   
   // Вызовем функцию
-  enableValidation(elements);
+  enableValidation(validationConfig);
