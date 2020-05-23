@@ -21,6 +21,7 @@ const popupBigImage = document.querySelector('.popup__image');
 const formPlace = document.getElementById('place-form');
 const popupInput = Array.from(document.querySelectorAll('.popup__input'));
 const spanError = Array.from(document.querySelectorAll('.popup__error'));
+const allPopups = Array.from(document.querySelectorAll('.popup'));
 
 const initialCards = [
     {
@@ -49,61 +50,55 @@ const initialCards = [
     },
 ];
 
-//удалем span у input
-function deleteErrors() {
-    spanError.forEach((span) => {
-        span.textContent = '';
-    })
-    popupInput.forEach((input) => {
-        input.classList.remove('popup__input_type_error');
-    })
-};
 
-function openPopup(elem) {
-    elem.classList.add('popup_opened');
-    const popupOpened = document.querySelector('.popup_opened');
-    document.addEventListener('keydown', (evt) => {
-        if (evt.key === 'Escape') {
-            closePopup(popupOpened);
-        };
-    });
-    document.addEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-        closePopup(popupOpened);
-        }
-    });
+function deleteErrors(elem) {
+    const form = elem.querySelector(validationConfig.formSelector);
+    const formInputs = Array.from(form.querySelectorAll(validationConfig.inputSelector));
+    formInputs.forEach((formInput) => {
+        hideInputError(form, formInput, validationConfig);
+      });
+}
+
+function closePopupByClick(evt) {
+    if (evt.target.classList.contains('popup_opened')) {
+        evt.target.classList.remove('popup_opened');
+    }
+}
+
+function closePopupByEsc(evt) {
+    if (evt.key === 'Escape') {
+        allPopups.forEach((popup) => {
+            if (popup.classList.contains("popup_opened")) {
+              popup.classList.remove("popup_opened");
+            }
+          });  
+    }
+}
+
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+    document.addEventListener('keydown', (closePopupByEsc));
+    document.addEventListener('click', (closePopupByClick));
 }
 
 function closePopup(elem) {
     elem.classList.remove('popup_opened');
-    document.removeEventListener('keydown', (evt) => {
-        if (evt.key === 'Escape') {
-          document.querySelector('.popup_opened').classList.remove('popup_opened');
-        };
-    });
-    document.removeEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-        closePopup(popupOpened);
-        }
-    });
+    document.removeEventListener('keydown', (closePopupByEsc));
+    document.removeEventListener('click', (closePopupByClick));
 }
 
 function formPopupAddImage(elem) {
-    if (!elem.classList.contains('popup_opened')) {
     placeNameInput.value = "";
     placeLinkInput.value = "";
-    };
+    deleteErrors(elem)
     openPopup(elem)
-    deleteErrors()
 };
 
 function formPopupEditProfile(elem) {
-    if (!elem.classList.contains('popup_opened')) {
-        nameInput.value = name.textContent;
-        jobInput.value = job.textContent;
-    };
+    nameInput.value = name.textContent;
+    jobInput.value = job.textContent;
+    deleteErrors(elem)
     openPopup(elem)
-    deleteErrors()
 };
 
 //Функция отображения данных из формы на странице
@@ -137,8 +132,7 @@ function deleteCard(evt) {
     const cardBody = evt.target.closest('.element');
     const likeButton = cardBody.querySelector('.element__like-button'); //кнопка лайка
     const trashButton = cardBody.querySelector('.element__trash-button'); //кнопка корзины
-    const cardTemplate = cardElement.cloneNode(true);
-    const cardImage = cardTemplate.querySelector('.element__image'); //Изображение места
+    const cardImage = cardBody.querySelector('.element__image'); //Изображение места
     cardImage.removeEventListener('click', bigImage);
     likeButton.removeEventListener('click', likeCard);
     trashButton.removeEventListener('click', deleteCard);
