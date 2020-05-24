@@ -55,7 +55,6 @@ const toggleButtonState = (inputList, buttonElement, formObject) => {
     };
 
 
-
 //добавление слушателя всем полям формы
 const setEventListeners = (formElement, formObject) => {
     const inputList = Array.from(formElement.querySelectorAll(formObject.inputSelector));

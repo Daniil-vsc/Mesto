@@ -19,8 +19,6 @@ const popupImageName = document.querySelector('.popup__name');
 const closeButtonBigImage = document.getElementById('close-image');
 const popupBigImage = document.querySelector('.popup__image');
 const formPlace = document.getElementById('place-form');
-const popupInput = Array.from(document.querySelectorAll('.popup__input'));
-const spanError = Array.from(document.querySelectorAll('.popup__error'));
 const allPopups = Array.from(document.querySelectorAll('.popup'));
 
 const initialCards = [
@@ -61,7 +59,7 @@ function deleteErrors(elem) {
 
 function closePopupByClick(evt) {
     if (evt.target.classList.contains('popup_opened')) {
-        evt.target.classList.remove('popup_opened');
+        closePopup(evt.target);
     }
 }
 
@@ -69,7 +67,7 @@ function closePopupByEsc(evt) {
     if (evt.key === 'Escape') {
         allPopups.forEach((popup) => {
             if (popup.classList.contains("popup_opened")) {
-              popup.classList.remove("popup_opened");
+                closePopup(popup);
             }
           });  
     }
